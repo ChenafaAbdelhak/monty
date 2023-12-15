@@ -1,7 +1,8 @@
 #include "monty.h"
 
 instruction_t instructions[] ={
-        {"push", push}
+        {"push", push},
+	
 };
 
 /**
@@ -17,7 +18,7 @@ int main(int argc, char *argv[])
         unsigned int line_number = 1;
         stack_t *stack = NULL;
         struct instruction_s *current_instruction = NULL;
-        char *opcode = NULL;
+        char opcode[256];
         int value = 0;
         size_t i;
 
@@ -28,18 +29,20 @@ int main(int argc, char *argv[])
         }
 
         file = fopen(argv[1], "r");
-if (file == NULL)
+	if (file == NULL)
         {
                 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
                 return (EXIT_FAILURE);
         }
-void _pint(stack_t **stack, unsigned int line_number)        while (fscanf(file, "%s", opcode) == 1)
+	printf("file opened \n");
+	while (fscanf(file, "%s", opcode) == 1)
         {
+		printf("scan \"%s\"\n", opcode);
                 for (i = 0; i < sizeof(instructions) / sizeof(instructions[0]); i++)
                 {
                         if (strcmp(opcode, instructions[i].opcode) == 0)
                         {
-                                current_instruction = instructions[i];
+                                current_instruction = &instructions[i];
                                 break;
                         }
                 }
@@ -60,6 +63,7 @@ void _pint(stack_t **stack, unsigned int line_number)        while (fscanf(file,
 		line_number++;
         }
         fclose(file);
+	printf("closed \n");
         free_stack(stack);
 
 

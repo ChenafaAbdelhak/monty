@@ -28,4 +28,5 @@ void push(stack_t **stack, int n, unsigned int line_number)
                 (*stack)->prev = node;
 
         *stack = node;
+	printf("\tpushed %d read from %u\n", n, line_number);
 }

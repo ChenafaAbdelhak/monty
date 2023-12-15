@@ -3,11 +3,8 @@
 
 #define _GNU_SOURCE
 #include <stdio.h>
-#include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include <stdarg.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,8 +40,10 @@ extern instruction_t instructions[];
 
 void push(stack_t **stack, int n, unsigned int line_number);
 void free_stack(stack_t *head);
+/*
 void _pint(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
-void _swap(stack_t **stack, unsigned int line_number)
+void _swap(stack_t **stack, unsigned int line_number);
+*/
 #endif

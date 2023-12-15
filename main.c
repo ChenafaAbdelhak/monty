@@ -33,7 +33,7 @@ if (file == NULL)
                 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
                 return (EXIT_FAILURE);
         }
-        while (fscanf(file, "%s", opcode) == 1)
+void _pint(stack_t **stack, unsigned int line_number)        while (fscanf(file, "%s", opcode) == 1)
         {
                 for (i = 0; i < sizeof(instructions) / sizeof(instructions[0]); i++)
                 {

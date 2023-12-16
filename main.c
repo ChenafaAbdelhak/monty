@@ -2,7 +2,7 @@
 
 instruction_t instructions[] ={
         {"push", push},
-	
+	{"pall", pall},	
 };
 
 /**
@@ -34,7 +34,6 @@ int main(int argc, char *argv[])
                 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
                 return (EXIT_FAILURE);
         }
-	printf("file opened \n");
 	while (fscanf(file, "%s", opcode) == 1)
         {
 		printf("scan \"%s\"\n", opcode);
@@ -66,7 +65,5 @@ int main(int argc, char *argv[])
 	printf("closed \n");
         free_stack(stack);
 
-
         return (EXIT_SUCCESS);
 }
-                 

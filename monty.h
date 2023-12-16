@@ -33,13 +33,25 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*f)(stack_t **stack, int n, unsigned int line_number);
+        void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern instruction_t instructions[];
+typedef struct glob_s
+{
+	FILE *file;
+	char *line;
+	char *command;
+	char *arg;
+} glob_t;
 
-void push(stack_t **stack, int n, unsigned int line_number);
+extern glob_t glob;
+
+void push(stack_t **stack, unsigned int line_number);
+stack_t *add_node(stack_t **stack, int n);
+int is_int(char *str);
+void pall(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
+
 /*
 void _pint(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);

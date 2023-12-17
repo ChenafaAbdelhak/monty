@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	while (getline(&glob.line, &length, glob.file) != -1)
 	{
 		glob.command = strtok(glob.line, " \t\n$");
-		if (glob.command == NULL || glob.command == "#")
+		if (glob.command == NULL || glob.command[0] == '#')
 		{
 			line_number++;
 			continue;

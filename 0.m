@@ -1,8 +1,17 @@
-push 1 $
-push 2 $
-push 3$
-pall$
-push 45
+push
+push
 pall
-call
-push kdk
+
+push 1;
+pushe 2
+
+pall;
+push 1;
+pall;
+push 2;
+...
+
+push 1;
+pall holb
+
+

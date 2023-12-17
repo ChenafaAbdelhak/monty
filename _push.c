@@ -3,7 +3,6 @@
 /**
  * push - add a value to the stack
  * @stack: a d linked list as a stack
- * @value: the value to push
  * @line_number: number of the line
  *
  */
@@ -33,6 +32,13 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * add_node - add a node at the beggininng
+ * @stack: pointer to the stack head
+ * @n: the ineger to add
+ * Return: adress of the new node
+ */
+
 stack_t *add_node(stack_t **stack, const int n)
 {
 	stack_t *new_node = NULL;
@@ -57,6 +63,12 @@ stack_t *add_node(stack_t **stack, const int n)
 
 	return (new_node);
 }
+
+/**
+ * is_int - test if a string contain only a number
+ * @str: the string
+ * Return: 0 or 1
+ */
 
 int is_int(char *str)
 {

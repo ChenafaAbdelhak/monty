@@ -1,69 +1,48 @@
 #include "monty.h"
 
-instruction_t instructions[] ={
-        {"push", push},
-	{"pall", pall},	
-};
-
+glob_t glob;
 /**
  * main - entry point
- * @argv: args vector
- * @argc: count of params
- * Return: return
+ * @argc: count of args
+ * @argv: arguments vector
+ * Return: 0 or failure
+ *
  */
 
 int main(int argc, char *argv[])
 {
-        FILE *file;
-        unsigned int line_number = 1;
-        stack_t *stack = NULL;
-        struct instruction_s *current_instruction = NULL;
-        char opcode[256];
-        int value = 0;
-        size_t i;
+	size_t length;
+	unsigned int line_number = 1;
+	stack_t *stack = NULL;
+	unsigned int i;
+	instruction_t instructions[] = {
+		{"push", push},
+		{"pall", pall}
+	};
+	(void) argc;
 
-        if (argc != 2)
-        {
-                fprintf(stderr, "USAGE: monty file\n");
-                return (EXIT_FAILURE);
-        }
+	glob.file = fopen(argv[1], "r");
+	if (glob.file == NULL)
+	{
+		return (EXIT_FAILURE);
+	}
 
-        file = fopen(argv[1], "r");
-	if (file == NULL)
-        {
-                fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-                return (EXIT_FAILURE);
-        }
-	while (fscanf(file, "%s", opcode) == 1)
-        {
-		printf("scan \"%s\"\n", opcode);
-                for (i = 0; i < sizeof(instructions) / sizeof(instructions[0]); i++)
-                {
-                        if (strcmp(opcode, instructions[i].opcode) == 0)
-                        {
-                                current_instruction = &instructions[i];
-                                break;
-                        }
-                }
-                if (current_instruction != NULL)
-                {
-                        if (strcmp(opcode, "push") == 0)
-                        {
-                                if (fscanf(file, "%d", &value) != 1)
-                                {
-                                        fprintf(stderr, "L%u: usage: push integer\n", line_number);
-                                        fclose(file);
-                                        free_stack(stack);
-                                        return (EXIT_FAILURE);
-                                }
-                        }
-                        current_instruction->f(&stack, value, line_number);
-                }
+	while (getline(&glob.line, &length, glob.file) != -1)
+	{
+		glob.command = strtok(glob.line, " \t\n$");
+		if (glob.command == NULL)
+		{
+			line_number++;
+			continue;
+		}
+		glob.arg = strtok(NULL, " \t\n$");
+		for (i = 0; i < sizeof(instructions) / sizeof(instruction_t); i++)
+		{
+			if (strcmp(glob.command, instructions[i].opcode) == 0)
+				instructions[i].f(&stack, line_number);
+		}
 		line_number++;
-        }
-        fclose(file);
-	printf("closed \n");
-        free_stack(stack);
+	}
 
-        return (EXIT_SUCCESS);
+	return (0);
 }

@@ -1,2 +1,4 @@
 push 1;
-ppo
+
+push 5
+pall

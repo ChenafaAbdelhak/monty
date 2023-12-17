@@ -40,13 +40,13 @@ int main(int argc, char *argv[])
 
 	while (getline(&glob.line, &length, glob.file) != -1)
 	{
-		glob.command = strtok(glob.line, " \t\n$");
+		glob.command = strtok(glob.line, " \t\n;$");
 		if (glob.command == NULL || glob.command[0] == '#')
 		{
 			line_number++;
 			continue;
 		}
-		glob.arg = strtok(NULL, " \t\n$");
+		glob.arg = strtok(NULL, " \t\n;$");
 		for (i = 0; i < sizeof(instructions) / sizeof(instruction_t); i++)
 		{
 			if (strcmp(glob.command, instructions[i].opcode) == 0)

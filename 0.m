@@ -1,4 +1,2 @@
-push 1
-push 2
-add
-pall
+push 1;
+ppo

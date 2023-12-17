@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
 	glob.file = fopen(argv[1], "r");
 	if (glob.file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit (EXIT_FAILURE);
+		fprintf( stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
 
 	while (getline(&glob.line, &length, glob.file) != -1)
@@ -56,11 +56,11 @@ int main(int argc, char *argv[])
 			}
 			else if (i == (sizeof(instructions) / sizeof(instruction_t) - 1))
 			{
-				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, glob.command);
+				fprintf( stderr, "L%u: unknown instruction %s\n", line_number, glob.command);
 				free_stack(stack);
 				fclose(glob.file);
 				free(glob.line);
-				exit (EXIT_FAILURE);
+				exit(EXIT_FAILURE);
 			}
 		}
 		line_number++;

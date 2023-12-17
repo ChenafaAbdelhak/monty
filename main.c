@@ -19,12 +19,18 @@ int main(int argc, char *argv[])
 		{"push", push},
 		{"pall", pall}
 	};
-	(void) argc;
+
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
 	glob.file = fopen(argv[1], "r");
 	if (glob.file == NULL)
 	{
-		return (EXIT_FAILURE);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit (EXIT_FAILURE);
 	}
 
 	while (getline(&glob.line, &length, glob.file) != -1)

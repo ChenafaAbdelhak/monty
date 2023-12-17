@@ -45,7 +45,15 @@ int main(int argc, char *argv[])
 		for (i = 0; i < sizeof(instructions) / sizeof(instruction_t); i++)
 		{
 			if (strcmp(glob.command, instructions[i].opcode) == 0)
+			{
 				instructions[i].f(&stack, line_number);
+				break;
+			}
+			else if (i == (sizeof(instructions) / sizeof(instruction_t) - 1))
+			{
+				fprintf(stderr, "L<%u>: unknown instruction <%s>\n", line_number, glob.command);
+				exit (EXIT_FAILURE);
+			}
 		}
 		line_number++;
 	}

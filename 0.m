@@ -4,4 +4,5 @@ push 3$
 pall$
 push 45
 pall
+call
 push kdk

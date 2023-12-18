@@ -21,7 +21,8 @@ int main(int argc, char *argv[])
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
-		{"mul", mul}
+		{"mul", mul},
+		{"div", _div}
 	};
 
 	check_argc(argc);

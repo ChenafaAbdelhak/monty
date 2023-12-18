@@ -36,8 +36,10 @@ void check_argc(int argc)
  * @argv: the argv passed to main
  */
 
-void open_file(char **argv)
+void open_file(char *argv[])
 {
+	glob.file = fopen(argv[1], "r");
+
 	if (glob.file == NULL)
         {
                 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);

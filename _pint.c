@@ -1,10 +1,10 @@
 #include "monty.h"
 
 /**
- * _pint - print value on top of `stack', or exit if stack is empty
+ * pint - print value on top of `stack', or exit if stack is empty
  * @stack: double pointer to head of stack
  * @line_number: line number of current operation
- * Return: void
+ *
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
@@ -14,7 +14,7 @@ void pint(stack_t **stack, unsigned int line_number)
 		free(glob.line);
 		free_stack(*stack);
 		fclose(glob.file);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	printf("%d\n", (*stack)->n);

@@ -1,7 +1,9 @@
 #include "monty.h"
 
 /**
- *
+ * pop - delete top element
+ * @stack: stack
+ * @line_number: line
  */
 
 void pop(stack_t **stack, unsigned int line_number)
@@ -15,7 +17,7 @@ void pop(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	
+
 	if (node->next == NULL)
 	{
 		free(node);

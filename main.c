@@ -58,15 +58,12 @@ int main(int argc, char *argv[])
 			}
 			else if (i == (sizeof(instructions) / sizeof(instruction_t) - 1))
 			{
-<<<<<<< HEAD
 				fprintf( stderr, "L%u: unknown instruction %s\n", line_number, glob.command);
 				free_stack(stack);
 				fclose(glob.file);
 				free(glob.line);
-=======
 				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, glob.command);
 				prepare_exit(&stack);
->>>>>>> dc8a525bb0fbcef9e66f7f5052fe58f57e426e14
 				exit (EXIT_FAILURE);
 			}
 		}

@@ -30,6 +30,7 @@ void push(stack_t **stack, unsigned int line_number)
 		free(glob.line);
 		exit(EXIT_FAILURE);
 	}
+
 }
 
 /**

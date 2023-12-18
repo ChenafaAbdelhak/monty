@@ -22,7 +22,8 @@ int main(int argc, char *argv[])
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
-		{"nop", nop}
+		{"nop", nop},
+		{"sub", sub}
 	};
 
 	if (argc != 2)
@@ -57,17 +58,13 @@ int main(int argc, char *argv[])
 			else if (i == (sizeof(instructions) / sizeof(instruction_t) - 1))
 			{
 				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, glob.command);
-				free_stack(stack);
-				fclose(glob.file);
-				free(glob.line);
+				prepare_exit(&stack);
 				exit (EXIT_FAILURE);
 			}
 		}
 		line_number++;
 	}
-	fclose(glob.file);
-	free(glob.line);
-	free_stack(stack);
+	prepare_exit(&stack);
 
 	return (0);
 }

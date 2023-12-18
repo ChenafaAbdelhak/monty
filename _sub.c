@@ -24,6 +24,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	node->n = node->n - val;
 	node->prev = NULL;
 	free(*stack);
+	(*stack) = node;
 }
 /**
  * prepare_exit - freeall the allocated mem

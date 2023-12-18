@@ -14,18 +14,6 @@ int main(int argc, char *argv[])
 	size_t length;
 	unsigned int line_number = 1;
 	stack_t *stack = NULL;
-	unsigned int i;
-	instruction_t instructions[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"mul", mul}
-	};
 
 	check_argc(argc);
 	open_file(argv);
@@ -38,21 +26,8 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		glob.arg = strtok(NULL, " \t\n");
-		for (i = 0; i < sizeof(instructions) / sizeof(instruction_t); i++)
-		{
-			if (strcmp(glob.command, instructions[i].opcode) == 0)
-			{
-				instructions[i].f(&stack, line_number);
-				break;
-			}
-			else if (i == (sizeof(instructions) / sizeof(instruction_t) - 1))
-			{
-				fprintf(stderr, "L%u: unknown instruction %s\n",
-					line_number, glob.command);
-				prepare_exit(&stack);
-				exit (EXIT_FAILURE);
-			}
-		}
+
+		execute_opt(stack, line_number);
 		line_number++;
 	}
 	prepare_exit(&stack);

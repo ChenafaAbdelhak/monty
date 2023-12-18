@@ -46,3 +46,50 @@ void open_file(char *argv[])
                 exit (EXIT_FAILURE);
         }
 }
+
+/**
+ * execute_opt - execute the function
+ * @stack: stack
+ * @line_number: line n
+ */
+
+void execute_opt(stack_t *stack, unsigned int line_number)
+{
+	unsigned int i;
+	instruction_t instructions[] = {
+		{ "push", push
+		},
+		{ "pall", pall
+		},
+		{ "pint", pint
+		},
+		{ "pop", pop
+		},
+		{ "swap", swap
+		},
+		{ "add", add
+		},
+		{ "nop", nop
+		},
+		{ "sub", sub
+		},
+		{ "mul", mul
+		}
+	};
+
+	for (i = 0; i < sizeof(instructions) / sizeof(instruction_t); i++)
+	{
+		if (strcmp(glob.command, instructions[i].opcode) == 0)
+		{
+			instructions[i].f(&stack, line_number);
+			break;
+		}
+		else if (i == (sizeof(instructions) / sizeof(instruction_t) - 1))
+		{
+			fprintf(stderr, "L%u: unknown instruction %s\n",
+				line_number, glob.command);
+			prepare_exit(&stack);
+			exit(EXIT_FAILURE);
+		}
+	}
+}

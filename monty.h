@@ -60,6 +60,9 @@ void pall(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
 void check_argc(int argc);
 void open_file(char *argv[]);
+void execute_opt(stack_t *stack, unsigned int line_number);
+
+
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);

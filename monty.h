@@ -67,4 +67,5 @@ void swap(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void prepare_exit(stack_t **stack);
+void mul(stack_t **stack, unsigned int line_number);
 #endif

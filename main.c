@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 	if (glob.file == NULL)
 	{
 		fprintf( stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
+		exit (EXIT_FAILURE);
 	}
 
 	while (getline(&glob.line, &length, glob.file) != -1)
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 				free_stack(stack);
 				fclose(glob.file);
 				free(glob.line);
-				exit(EXIT_FAILURE);
+				exit (EXIT_FAILURE);
 			}
 		}
 		line_number++;

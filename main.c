@@ -1,14 +1,13 @@
 #include "monty.h"
+glob_t glob;
 /**
  * main - entry point
  * @argc: count of args
  * @argv: arguments vector
  * Return: 0 or failure
- *
  */
 int main(int argc, char *argv[])
 {
-	glob_t glob;
 	size_t length;
 	unsigned int line_number = 1;
 	stack_t *stack = NULL;

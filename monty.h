@@ -58,7 +58,8 @@ stack_t *add_node(stack_t **stack, int n);
 int is_int(char *str);
 void pall(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
-
+void check_argc(int argc);
+void open_file(char **argv);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
